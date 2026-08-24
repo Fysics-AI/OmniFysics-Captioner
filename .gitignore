@@ -1,0 +1,58 @@
+# macOS and editors
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Logs and local configuration
+*.log
+*.tmp
+.env
+.env.*
+!.env.example
+
+# LaTeX build products
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Large local data and generated outputs
+/data/
+/datasets/
+/checkpoints/
+/weights/
+/outputs/
+/runs/
+/cache/
+*.pt
+*.pth
+*.safetensors
+*.ckpt
+*.mp4
+*.mkv
+*.wav
+*.webm
