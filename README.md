@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#paper">📄 Paper</a> •
-  <a href="https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark">🤗 OPC benchmark &amp; Dataset</a> •
+  <a href="https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark">📊 OPC benchmark &amp; Dataset</a> •
   <a href="#model">🤗 Model</a> •
   <a href="#citation">📚 Citation</a>
 </p>
@@ -51,12 +51,12 @@ OmniFysics-Agent builds a coarse event timeline, identifies intervals that need 
 OmniPhysCap (OPC) is a physics-aware and omission-aware benchmark for evaluating whether generated captions preserve physical and cross-modal evidence. It covers physical interactions, physical outcomes, visual information, audio, audiovisual alignment, temporal order, speech, and OCR. Each question includes a `Not Mentioned` option, allowing omitted evidence to be separated from contradictory evidence.
 
 <p align="center">
-  <img src="fig/opc-benchmark-results.png" alt="OPC benchmark results" width="480">
+  <img src="fig/opc-benchmark-results.png" alt="OPC benchmark results" width="360">
 </p>
 
 The benchmark and dataset are available on Hugging Face:
 
-**[🤗 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark)**
+**[📊 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark)**
 
 ## Model
 
