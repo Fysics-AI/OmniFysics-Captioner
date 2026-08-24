@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#paper">📄 Paper</a> •
-  <a href="https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark">🤗 OPC benchmark &amp; Dataset</a> •
+  <a href="https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark">📊 OPC benchmark &amp; Dataset</a> •
   <a href="#model">🤗 Model</a> •
   <a href="#citation">📚 Citation</a>
 </p>
@@ -56,7 +56,7 @@ OmniPhysCap (OPC) is a physics-aware and omission-aware benchmark for evaluating
 
 The benchmark and dataset are available on Hugging Face:
 
-**[🤗 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark)**
+**[📊 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark)**
 
 ## Model
 
