@@ -27,7 +27,7 @@ We introduce **Daily-Physics 50K** for physics-rich caption supervision, **OmniF
 The framework connects physics-rich data construction, active multimodal perception, and tool-free caption generation. Category-aware temporal retrieval identifies clips with observable physical processes. The Agent then gathers source-attributed evidence from localized intervals, and the end-to-end Captioner learns to produce detailed captions directly from audiovisual input.
 
 <p align="center">
-  <img src="fig/pipeline-overview.png" alt="OmniFysics-Agent pipeline" width="100%">
+  <img src="fig/case-study.png" alt="OmniFysics-Agent pipeline" width="100%">
 </p>
 
 ## Daily-Physics 50K
@@ -43,7 +43,7 @@ Daily-Physics 50K is constructed from heterogeneous audiovisual sources through 
 OmniFysics-Agent builds a coarse event timeline, identifies intervals that need closer inspection, and routes them to modality-specific observers. Audio and visual observations are complemented by PPM evidence about object properties, interactions, material responses, and likely outcomes. A finalizer aggregates the evidence into a temporally coherent caption.
 
 <p align="center">
-  <img src="fig/case-study.png" alt="Qualitative physical-perception case study" width="100%">
+  <img src="fig/pipeline-overview.png" alt="Qualitative physical-perception case study" width="100%">
 </p>
 
 ## OPC benchmark &amp; Dataset
