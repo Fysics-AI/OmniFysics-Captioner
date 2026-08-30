@@ -59,7 +59,7 @@ The benchmark and dataset are available on Hugging Face:
 
 **[📊 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark)**
 
-The current release includes a 1,000-video sample associated with Daily-Physics 50K and used for OPC evaluation. The complete Daily-Physics 50K release will be linked here when available.
+The current release contains the OPC benchmark together with a 1,000-video training subset sampled from Daily-Physics 50K. The complete Daily-Physics 50K release will be linked here when available.
 
 ## Model
 
