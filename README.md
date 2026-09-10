@@ -28,7 +28,7 @@ In addition, we also propose the following components:
 - [Daily-Physics 50K](#daily-physics-50k)
 - [OmniFysics-Agent](#omnifysics-agent)
   - [Tool: Physical Perception Model (PPM)](#tool-physical-perception-model-ppm)
-- [OPC benchmark &amp; Dataset](#opc-benchmark--dataset)
+- [OPC benchmark](#opc-benchmark)
 - [Model](#model)
 - [Paper](#paper)
 - [Citation](#citation)
@@ -70,7 +70,7 @@ The released PPM checkpoint is available on Hugging Face:
 
 **[🤗 Fysics-AI/OmniFysics-Captioner/PPM](https://huggingface.co/Fysics-AI/OmniFysics-Captioner/tree/main/PPM)**
 
-## OPC benchmark &amp; Dataset
+## OPC benchmark
 
 OmniPhysCap (OPC) is a physics-aware, omission-aware benchmark designed to evaluate how well generated captions retain omni-modal information from audiovisual videos. It systematically assesses whether a caption recovers what happens, which objects interact, how materials respond, and what state or outcome follows. The benchmark contains 1,000 audiovisual clips and 8,000 questions spanning general semantics, temporal relations, audio, audiovisual alignment, and — with dedicated emphasis — physical interactions and outcomes. Each question includes an explicit *Not Mentioned* option, distinguishing omitted evidence from conflicting evidence.
 
