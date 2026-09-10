@@ -12,16 +12,15 @@
 
 ## Introduction
 
-Fine-grained perception of multimodal information is critical for advancing human-AI interaction. **OmniFysics-Captioner** is an omni-modal model for producing detailed, low-hallucination audiovisual captions grounded in the physical world. It describes not only what happens, but also which objects interact, how materials respond, and how states change over time.
+Fine-grained perception of multimodal information is critical for advancing human-AI interaction. **OmniFysics-Captioner** is an end-to-end omni-modal captioning model that produces highly detailed, low-hallucination audiovisual captions grounded in the physical world. Fine-tuned from Qwen3-Omni on physics-rich supervision, it reads raw audio and video in a single forward pass and directly generates captions that describe not only what happens, but also which objects interact, how materials respond, and how states change over time — without invoking external tools at inference.
 
-We introduce **Daily-Physics 50K** for physics-rich caption supervision and **OmniFysics-Agent** for active multimodal evidence acquisition, which integrates modality-specific observers—including a dedicated physical-perception tool—to gather evidence before caption synthesis. We further propose **OmniPhysCap (OPC)**, a physics-grounded benchmark for evaluating whether generated captions retain physical events and cross-modal evidence.
+**[🤗 Fysics-AI/OmniFysics-Captioner](https://huggingface.co/Fysics-AI/OmniFysics-Captioner)**
 
-## Highlights
+In addition, we introduce the following supporting components:
 
-- **Physics-rich supervision:** Daily-Physics 50K contains approximately 50K video-caption pairs spanning six physical-event categories and 23 observable subcategories.
-- **Active evidence acquisition:** OmniFysics-Agent coordinates audio, visual, and physical observers over localized time windows before caption synthesis.
-- **Tool-free captioning:** OmniFysics-Captioner is an end-to-end omni-modal model that produces detailed audiovisual captions directly from input, with a dedicated physical-perception tool providing object-centric evidence about properties, interactions, material responses, and state transitions.
-- **Physics-grounded caption evaluation:** OPC evaluates whether audiovisual captions recover physical events, object interactions, material responses, state transitions, and observable outcomes.
+- **📊 Dataset — Daily-Physics 50K:** approximately 50K physics-rich video–caption pairs spanning six physical-event categories and 23 observable subcategories, used to supervise the end-to-end model. A 1,000-video training subset is now available at [🔗 Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train).
+- **🕵️ Agent — OmniFysics-Agent:** an active evidence-acquisition agent that first builds a coarse event timeline, then coordinates audio, visual, and physical observers over localized time windows to gather source-attributed evidence. Its **physical-perception model (PPM)** — a dedicated tool — analyzes representative frames for object properties, material, contact, support, deformation, motion, interaction relations, and state changes. Available at [🔗 Fysics-AI/OmniFysics-Captioner/tree/main/PPM](https://huggingface.co/Fysics-AI/OmniFysics-Captioner/tree/main/PPM).
+- **📈 Benchmark — OPC (OmniPhysCap):** a physics-aware, omission-aware benchmark with 1,000 audiovisual clips and 8,000 questions for evaluating whether generated captions retain physical events, object interactions, material responses, state transitions, and cross-modal evidence. Available at [🔗 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark).
 
 ## Overview
 
