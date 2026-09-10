@@ -53,7 +53,7 @@ PPM is a dedicated **tool** inside OmniFysics-Agent that serves as the physical-
 
 The released PPM checkpoint is available on Hugging Face:
 
-**[🤗 Fysics-AI/OmniFysics-Captioner](https://huggingface.co/Fysics-AI/OmniFysics-Captioner)**
+**[🤗 Fysics-AI/OmniFysics-Captioner/PPM](https://huggingface.co/Fysics-AI/OmniFysics-Captioner/tree/main/PPM)**
 
 ## OPC benchmark &amp; Dataset
 
