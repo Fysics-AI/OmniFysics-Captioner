@@ -22,6 +22,18 @@ In addition, we also propose the following components:
 - **🕵️ Agent — OmniFysics-Agent:** an active-perception agent that first builds a coarse event timeline, then coordinates audio, visual, and physical-perception tools over localized time windows to collect spatiotemporally aligned and traceable cross-modal evidence. Within the Agent, a **physical perception model (PPM)** — fine-tuned on approximately 2M image-level samples — serves as a dedicated tool for perceiving physical cues such as material, contact, and deformation, and for extracting object-interaction and state-change cues. Available at [🔗 Fysics-AI/OmniFysics-Captioner/tree/main/PPM](https://huggingface.co/Fysics-AI/OmniFysics-Captioner/tree/main/PPM).
 - **📈 Benchmark — OPC (OmniPhysCap):** a physics-aware, omission-aware benchmark with 1,000 audiovisual clips and 8,000 questions for evaluating whether generated captions retain physical events, object interactions, material responses, state transitions, and cross-modal evidence. Available at [🔗 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark).
 
+## Contents
+
+- [Overview](#overview)
+- [Daily-Physics 50K](#daily-physics-50k)
+- [OmniFysics-Agent](#omnifysics-agent)
+  - [Tool: Physical Perception Model (PPM)](#tool-physical-perception-model-ppm)
+- [OPC benchmark &amp; Dataset](#opc-benchmark--dataset)
+- [Model](#model)
+- [Paper](#paper)
+- [Citation](#citation)
+- [License](#license)
+
 ## Overview
 
 The framework connects physics-rich data construction, active multimodal perception, and tool-free caption generation. Category-Aware Temporal Anchor Aggregation (CATA) discovers and segments clips with observable physical processes. The Agent then collects spatiotemporally aligned and traceable cross-modal evidence from localized intervals, and the end-to-end Captioner learns to produce detailed captions directly from audiovisual input.
