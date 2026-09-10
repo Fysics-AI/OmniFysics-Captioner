@@ -38,6 +38,10 @@ Daily-Physics 50K is constructed from heterogeneous audiovisual sources through 
   <img src="fig/daily-physics-overview.png" alt="Daily-Physics 50K overview" width="100%">
 </p>
 
+A 1,000-video open subset of Daily-Physics 50K is now available for download:
+
+**[🔗 Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train)**
+
 ## OmniFysics-Agent
 
 OmniFysics-Agent forms a global event timeline from a low-cost audiovisual proxy, locates local intervals that require further inspection, and dynamically orchestrates modality-specific tools. Each observation batch is written to Evidence Memory and drives the next Plan–Execute–Observe–Reflect round, progressively refining modality choice, temporal scope, and question focus. The acquired evidence is spatiotemporally aligned and traceable, and a finalizer organizes it into a temporally coherent caption.
@@ -56,7 +60,7 @@ The released PPM checkpoint is available on Hugging Face:
 
 ## OPC benchmark &amp; Dataset
 
-OmniPhysCap (OPC) is a physics-aware benchmark designed specifically to evaluate captions of physical events in audiovisual videos. It measures whether a generated caption recovers what happens, which objects interact, how materials respond, and what state or outcome follows. The benchmark contains 1,000 videos and 8,000 questions spanning physical interactions and outcomes, together with complementary visual, audio, audiovisual-alignment, temporal, speech, and OCR information.
+OmniPhysCap (OPC) is a physics-aware, omission-aware benchmark designed to evaluate how well generated captions retain omni-modal information from audiovisual videos. It systematically assesses whether a caption recovers what happens, which objects interact, how materials respond, and what state or outcome follows. The benchmark contains 1,000 audiovisual clips and 8,000 questions spanning general semantics, temporal relations, audio, audiovisual alignment, and — with dedicated emphasis — physical interactions and outcomes. Each question includes an explicit *Not Mentioned* option, distinguishing omitted evidence from conflicting evidence.
 
 <p align="center">
   <img src="fig/opc-benchmark-results.png" alt="OPC benchmark results" width="360">
@@ -72,9 +76,11 @@ The current release contains the OPC benchmark together with a 1,000-video train
 
 ### OmniFysics-Captioner
 
-The full tool-free audiovisual captioning model: **Coming soon**.
+OmniFysics-Captioner is an end-to-end, tool-free omni-modal Captioner fine-tuned from Qwen3-Omni on Daily-Physics 50K. It reads raw audio and video in a single forward pass and directly generates physics-aware, detailed captions, amortizing the evidence-acquisition and organization capability of OmniFysics-Agent without requiring external tools at inference.
 
-The future release will include model identifiers, supported input formats, inference instructions, hardware requirements, and the applicable model license.
+The model checkpoint is available on Hugging Face:
+
+**[🤗 Fysics-AI/OmniFysics-Captioner](https://huggingface.co/Fysics-AI/OmniFysics-Captioner)**
 
 ## Paper
 
