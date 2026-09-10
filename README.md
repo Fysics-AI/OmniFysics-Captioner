@@ -16,7 +16,7 @@ Building omni-modal models with physical intelligence requires fine-grained supe
 
 **[🤗 Fysics-AI/OmniFysics-Captioner](https://huggingface.co/Fysics-AI/OmniFysics-Captioner)**
 
-In addition, we introduce the following supporting components:
+In addition, we also propose the following components:
 
 - **📊 Dataset — Daily-Physics 50K:** approximately 50K physics-rich video–caption pairs spanning six physical-event categories and 23 observable subcategories, used to supervise the end-to-end model. A 1,000-video training subset is now available at [🔗 Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train).
 - **🕵️ Agent — OmniFysics-Agent:** an active-perception agent that first builds a coarse event timeline, then coordinates audio, visual, and physical-perception tools over localized time windows to collect spatiotemporally aligned and traceable cross-modal evidence. Within the Agent, a **physical perception model (PPM)** — fine-tuned on approximately 2M image-level samples — serves as a dedicated tool for perceiving physical cues such as material, contact, and deformation, and for extracting object-interaction and state-change cues. Available at [🔗 Fysics-AI/OmniFysics-Captioner/tree/main/PPM](https://huggingface.co/Fysics-AI/OmniFysics-Captioner/tree/main/PPM).
@@ -24,7 +24,7 @@ In addition, we introduce the following supporting components:
 
 ## Overview
 
-The framework connects physics-rich data construction, active multimodal perception, and tool-free caption generation. Category-aware temporal retrieval identifies clips with observable physical processes. The Agent then gathers source-attributed evidence from localized intervals, and the end-to-end Captioner learns to produce detailed captions directly from audiovisual input.
+The framework connects physics-rich data construction, active multimodal perception, and tool-free caption generation. Category-Aware Temporal Anchor Aggregation (CATA) discovers and segments clips with observable physical processes. The Agent then collects spatiotemporally aligned and traceable cross-modal evidence from localized intervals, and the end-to-end Captioner learns to produce detailed captions directly from audiovisual input.
 
 <p align="center">
   <img src="fig/case-study.png" alt="Qualitative physical-perception case study" width="100%">
@@ -40,7 +40,7 @@ Daily-Physics 50K is constructed from heterogeneous audiovisual sources through 
 
 ## OmniFysics-Agent
 
-OmniFysics-Agent builds a coarse event timeline, identifies intervals that need closer inspection, and routes them to modality-specific observers. The PPM is a dedicated physical-perception tool that examines representative frames, identifies salient objects, and analyzes material properties, contact and support relations, deformation, motion, object interactions, state changes, and likely outcomes. Its object-centric evidence complements audio and visual observations before a finalizer aggregates all evidence into a temporally coherent caption.
+OmniFysics-Agent forms a global event timeline from a low-cost audiovisual proxy, locates local intervals that require further inspection, and dynamically orchestrates modality-specific tools. Each observation batch is written to Evidence Memory and drives the next Plan–Execute–Observe–Reflect round, progressively refining modality choice, temporal scope, and question focus. The acquired evidence is spatiotemporally aligned and traceable, and a finalizer organizes it into a temporally coherent caption.
 
 <p align="center">
   <img src="fig/pipeline-overview.png" alt="OmniFysics-Agent pipeline" width="100%">
@@ -48,7 +48,7 @@ OmniFysics-Agent builds a coarse event timeline, identifies intervals that need 
 
 ### Tool: Physical Perception Model (PPM)
 
-PPM is a dedicated **tool** inside OmniFysics-Agent that serves as the physical-perception observer. It analyzes representative images for object properties, material, contact, support, deformation, motion, interaction relations, and likely state changes or outcomes. Its object-centric evidence complements the observations of other modality-specific observers.
+Within OmniFysics-Agent, the PPM focuses on objects and physical phenomena in representative frames, perceiving physical cues such as material, contact, and deformation, and analyzing object interactions, state changes, and their potential outcomes. It is fine-tuned on approximately 2M image-level physical-perception samples to output object-centric, physical-aware evidence that complements the audio and visual tools.
 
 The released PPM checkpoint is available on Hugging Face:
 
