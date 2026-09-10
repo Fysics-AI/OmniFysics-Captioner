@@ -12,14 +12,14 @@
 
 ## Introduction
 
-Fine-grained perception of multimodal information is critical for advancing human-AI interaction. **OmniFysics-Captioner** is an end-to-end omni-modal captioning model that produces highly detailed, low-hallucination audiovisual captions grounded in the physical world. Fine-tuned from Qwen3-Omni on physics-rich supervision, it reads raw audio and video in a single forward pass and directly generates captions that describe not only what happens, but also which objects interact, how materials respond, and how states change over time — without invoking external tools at inference.
+Building omni-modal models with physical intelligence requires fine-grained supervision that captures physical evidence such as contact, support, deformation, and state transitions. **OmniFysics-Captioner** is an end-to-end, tool-free omni-modal Captioner that produces physics-aware audiovisual captions. It reads raw audio and video in a single forward pass and directly generates captions that describe not only what happens, but also which objects interact, how materials respond, and how states change over time.
 
 **[🤗 Fysics-AI/OmniFysics-Captioner](https://huggingface.co/Fysics-AI/OmniFysics-Captioner)**
 
 In addition, we introduce the following supporting components:
 
 - **📊 Dataset — Daily-Physics 50K:** approximately 50K physics-rich video–caption pairs spanning six physical-event categories and 23 observable subcategories, used to supervise the end-to-end model. A 1,000-video training subset is now available at [🔗 Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train).
-- **🕵️ Agent — OmniFysics-Agent:** an active evidence-acquisition agent that first builds a coarse event timeline, then coordinates audio, visual, and physical observers over localized time windows to gather source-attributed evidence. Its **physical-perception model (PPM)** — a dedicated tool — analyzes representative frames for object properties, material, contact, support, deformation, motion, interaction relations, and state changes. Available at [🔗 Fysics-AI/OmniFysics-Captioner/tree/main/PPM](https://huggingface.co/Fysics-AI/OmniFysics-Captioner/tree/main/PPM).
+- **🕵️ Agent — OmniFysics-Agent:** an active-perception agent that first builds a coarse event timeline, then coordinates audio, visual, and physical-perception tools over localized time windows to collect spatiotemporally aligned and traceable cross-modal evidence. Within the Agent, a **physical perception model (PPM)** — fine-tuned on approximately 2M image-level samples — serves as a dedicated tool for perceiving physical cues such as material, contact, and deformation, and for extracting object-interaction and state-change cues. Available at [🔗 Fysics-AI/OmniFysics-Captioner/tree/main/PPM](https://huggingface.co/Fysics-AI/OmniFysics-Captioner/tree/main/PPM).
 - **📈 Benchmark — OPC (OmniPhysCap):** a physics-aware, omission-aware benchmark with 1,000 audiovisual clips and 8,000 questions for evaluating whether generated captions retain physical events, object interactions, material responses, state transitions, and cross-modal evidence. Available at [🔗 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark).
 
 ## Overview
