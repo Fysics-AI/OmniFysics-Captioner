@@ -26,10 +26,15 @@ In addition, we also propose the following components:
 
 - [Overview](#overview)
 - [Daily-Physics 50K](#daily-physics-50k)
+  - [Daily-Physics Quick Start](#daily-physics-quick-start)
 - [OmniFysics-Agent](#omnifysics-agent)
   - [Tool: Physical Perception Model (PPM)](#tool-physical-perception-model-ppm)
+    - [PPM Quick Start](#ppm-quick-start)
 - [OPC benchmark](#opc-benchmark)
+  - [Evaluation Quick Start](#evaluation-quick-start)
 - [Model](#model)
+  - [Inference code](#inference-code)
+  - [Model Quick Start](#model-quick-start)
 - [Paper](#paper)
 - [Citation](#citation)
 - [License](#license)
@@ -54,6 +59,14 @@ A 1,000-video open subset of Daily-Physics 50K is now available for download:
 
 **[🔗 Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train)**
 
+### Daily-Physics Quick Start
+
+Download the open training subset with the Hugging Face CLI:
+
+    hf download Fysics-AI/OmniPhysics-Caption_benchmark \
+      --repo-type dataset --include "media/train/*" \
+      --local-dir ./data/omni_physics_caption_benchmark
+
 ## OmniFysics-Agent
 
 OmniFysics-Agent forms a global event timeline from a low-cost audiovisual proxy, locates local intervals that require further inspection, and dynamically orchestrates modality-specific tools. Each observation batch is written to Evidence Memory and drives the next Plan–Execute–Observe–Reflect round, progressively refining modality choice, temporal scope, and question focus. The acquired evidence is spatiotemporally aligned and traceable, and a finalizer organizes it into a temporally coherent caption.
@@ -70,6 +83,13 @@ The released PPM checkpoint is available on Hugging Face:
 
 **[🤗 Fysics-AI/OmniFysics-Captioner/PPM](https://huggingface.co/Fysics-AI/OmniFysics-Captioner/tree/main/PPM)**
 
+### PPM Quick Start
+
+Start the PPM image-level service from a local clone of this repository:
+
+    MODEL_PATH=/path/to/OmniFysics-Captioner/PPM \
+      bash PPM/scripts/serve_vllm.sh
+
 ## OPC benchmark
 
 OmniPhysCap (OPC) is a physics-aware, omission-aware benchmark designed to evaluate how well generated captions retain omni-modal information from audiovisual videos. It systematically assesses whether a caption recovers what happens, which objects interact, how materials respond, and what state or outcome follows. The benchmark contains 1,000 audiovisual clips and 8,000 questions spanning general semantics, temporal relations, audio, audiovisual alignment, and — with dedicated emphasis — physical interactions and outcomes. Each question includes an explicit *Not Mentioned* option, distinguishing omitted evidence from conflicting evidence.
@@ -83,6 +103,19 @@ The benchmark and dataset are available on Hugging Face:
 **[📊 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark)**
 
 The current release contains the OPC benchmark together with a 1,000-video training subset sampled from Daily-Physics 50K. The complete Daily-Physics 50K release will be linked here when available.
+
+### Evaluation Quick Start
+
+The public evaluation entrypoint generates captions for one OmniFysics-Captioner
+endpoint. It does not include private answers, judge credentials, other model
+endpoints, or machine-specific paths.
+
+    python evaluation/run_caption_benchmark.py \
+      --manifest /path/to/public/media_manifest.jsonl \
+      --output runs/omnifysics_captioner/captions.jsonl \
+      --endpoint http://127.0.0.1:8000/v1 \
+      --model omnifysics-captioner \
+      --with-audio
 
 ## Model
 
@@ -105,6 +138,15 @@ verify a running endpoint.
 The model checkpoint is available on Hugging Face:
 
 **[🤗 Fysics-AI/OmniFysics-Captioner](https://huggingface.co/Fysics-AI/OmniFysics-Captioner)**
+
+### Model Quick Start
+
+Download the merged checkpoint and start the OpenAI-compatible service:
+
+    hf download Fysics-AI/OmniFysics-Captioner \
+      --local-dir ./models/OmniFysics-Captioner
+    MODEL_PATH=./models/OmniFysics-Captioner \
+      bash inference/serve_vllm.sh
 
 ## Paper
 
