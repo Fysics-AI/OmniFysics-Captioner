@@ -1,17 +1,3 @@
----
-license: other
-library_name: transformers
-base_model:
-- Qwen/Qwen3-Omni-30B-A3B-Instruct
-tags:
-- audiovisual
-- video
-- captioner
-- multimodal
-- physical-reasoning
-- physics
----
-
 # OmniFysics-Captioner: Grounding Omni-Modal Understanding in the Physical World for Better Captioning
 
 <p align="center">
