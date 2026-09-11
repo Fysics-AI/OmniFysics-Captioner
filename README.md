@@ -20,7 +20,7 @@ In addition, we also propose the following components:
 
 - **📊 Dataset — Daily-Physics 50K:** approximately 50K physics-rich video–caption pairs spanning six physical-event categories and 23 observable subcategories, used to supervise the end-to-end model. A 1,000-video training subset is now available at [🔗 Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train).
 - **🕵️ Agent — OmniFysics-Agent:** an active-perception agent that first builds a coarse event timeline, then coordinates audio, visual, and physical-perception tools over localized time windows to collect spatiotemporally aligned and traceable cross-modal evidence. Within the Agent, a **physical perception model (PPM)** — fine-tuned on approximately 2M image-level samples — serves as a dedicated tool for perceiving physical cues such as material, contact, and deformation, and for extracting object-interaction and state-change cues. Available at [🔗 Fysics-AI/OmniFysics-Captioner/tree/main/PPM](https://huggingface.co/Fysics-AI/OmniFysics-Captioner/tree/main/PPM).
-- **📈 Benchmark — OPC (OmniPhysCap):** a physics-aware, omission-aware benchmark with 1,000 audiovisual clips and 8,000 questions for evaluating whether generated captions retain physical events, object interactions, material responses, state transitions, and cross-modal evidence. Available at [🔗 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark).
+- **📈 Benchmark — OPC (OmniPhysCap):** an audiovisual caption benchmark with 1,000 clips and 8,000 questions for measuring how well generated captions preserve visual content, temporal events, audio, speech/OCR, and audiovisual alignment. It includes targeted physics-interaction and physics-outcome questions as one part of the diagnostic suite, alongside general audiovisual caption checks. Available at [🔗 Fysics-AI/OmniPhysics-Caption_benchmark](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark).
 
 ## Contents
 
@@ -83,7 +83,7 @@ Start the PPM image-level service from a local clone of this repository:
 
 ## OPC benchmark
 
-OmniPhysCap (OPC) is a physics-aware, omission-aware benchmark designed to evaluate how well generated captions retain omni-modal information from audiovisual videos. It systematically assesses whether a caption recovers what happens, which objects interact, how materials respond, and what state or outcome follows. The benchmark contains 1,000 audiovisual clips and 8,000 questions spanning general semantics, temporal relations, audio, audiovisual alignment, and — with dedicated emphasis — physical interactions and outcomes. Each question includes an explicit *Not Mentioned* option, distinguishing omitted evidence from conflicting evidence.
+OmniPhysCap (OPC) is an audiovisual caption benchmark designed to evaluate how well generated captions retain omni-modal information from videos. It covers general visual semantics, temporal relations, audio, speech/OCR, and audiovisual alignment, with targeted physics-interaction and physics-outcome questions added to diagnose physical understanding. The benchmark contains 1,000 audiovisual clips and 8,000 questions. Each question includes an explicit *Not Mentioned* option, distinguishing omitted evidence from conflicting evidence.
 
 <p align="center">
   <img src="fig/opc-benchmark-results.png" alt="OPC benchmark results" width="360">
