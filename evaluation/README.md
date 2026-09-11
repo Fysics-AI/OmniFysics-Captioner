@@ -45,15 +45,16 @@ Input paths and credentials are never written to the output.
 
 ## Answer Scoring
 
-The public dataset deliberately excludes gold answers. If you have the private
-OPC answer file, score A-E prediction rows offline:
+The Hugging Face dataset deliberately excludes gold answers. For the requested
+GitHub release, the frozen 1K answer file is included locally at
+evaluation/data/benchmark.private.jsonl. Score A-E prediction rows offline:
 
     python evaluation/score_opc.py \
-      --private-answers <private-benchmark-jsonl> \
+      --private-answers evaluation/data/benchmark.private.jsonl \
       --predictions <model-predictions-jsonl> \
       --output-dir <score-output-directory>
 
-The private file must contain the frozen OPC 1K contracts. Predictions must
+The answer file contains the frozen OPC 1K contracts. Predictions must
 contain video_id, matching contract_sha256, and one A-E label per question_id.
 The reference Judge model is gpt-5.6;
 the offline scorer reports the primary Video-Macro Coverage and question/type

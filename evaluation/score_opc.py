@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""Score OPC 1K predictions against a local private answer file.
+"""Score OPC 1K predictions against the released answer file.
 
-The private answer file is intentionally not distributed with this repository.
 Predictions must contain one row per video with an answers list.
 """
 
