@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any
 
 
-REFERENCE_JUDGE_MODEL = "gpt-5.6-luna"
+REFERENCE_JUDGE_MODEL = "gpt-5.6"
 
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:

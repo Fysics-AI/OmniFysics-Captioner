@@ -55,7 +55,7 @@ OPC answer file, score A-E prediction rows offline:
 
 The private file must contain the frozen OPC 1K contracts. Predictions must
 contain video_id, matching contract_sha256, and one A-E label per question_id.
-The previous formal OPC evaluation used gpt-5.6-luna as the reference Judge;
+The reference Judge model is gpt-5.6;
 the offline scorer reports the primary Video-Macro Coverage and question/type
 breakdowns without calling any API.
 
