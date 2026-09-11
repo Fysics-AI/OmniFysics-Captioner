@@ -22,5 +22,4 @@ exec "${PYTHON_BIN}" -m vllm.entrypoints.cli.main serve "${MODEL_PATH}" \
   --max-num-seqs "${MAX_NUM_SEQS}" --gpu-memory-utilization "${GPU_MEMORY_UTILIZATION}" \
   --limit-mm-per-prompt '{"image":1,"video":1,"audio":1}' \
   --chat-template-content-format openai --reasoning-parser qwen3 \
-  --default-chat-template-kwargs '{"enable_thinking":false}' \
   --generation-config vllm --disable-custom-all-reduce
