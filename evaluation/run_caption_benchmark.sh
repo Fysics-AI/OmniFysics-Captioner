@@ -6,12 +6,16 @@ MANIFEST="${MANIFEST:?Set MANIFEST to a public video manifest JSONL}"
 OUTPUT="${OUTPUT:-runs/omnifysics_captioner/captions.jsonl}"
 ENDPOINT="${ENDPOINT:-http://127.0.0.1:8000/v1}"
 MODEL="${MODEL:-omnifysics-captioner}"
+WORKERS="${WORKERS:-4}"
+MAX_TOKENS="${MAX_TOKENS:-4096}"
 
 ARGS=(
   --manifest "${MANIFEST}"
   --output "${OUTPUT}"
   --endpoint "${ENDPOINT}"
   --model "${MODEL}"
+  --workers "${WORKERS}"
+  --max-tokens "${MAX_TOKENS}"
 )
 if [[ -n "${API_KEY_ENV:-}" ]]; then
   ARGS+=(--api-key-env "${API_KEY_ENV}")

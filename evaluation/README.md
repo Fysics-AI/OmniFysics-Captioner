@@ -25,12 +25,13 @@ Prepare a manifest with one JSON object per line:
 
 Start the model using the deployment instructions in ../inference, then run:
 
-    python evaluation/run_caption_benchmark.py \
-      --manifest /data/bench/media_manifest.jsonl \
-      --output runs/omnifysics_captioner/captions.jsonl \
-      --endpoint http://127.0.0.1:8000/v1 \
-      --model omnifysics-captioner \
-      --with-audio
+    export MANIFEST=/path/to/public/media_manifest.jsonl
+    export OUTPUT=runs/omnifysics_captioner/captions.jsonl
+    export ENDPOINT=http://127.0.0.1:8000/v1
+    export MODEL=omnifysics-captioner
+    export WORKERS=8
+    export WITH_AUDIO=1
+    bash evaluation/run_caption_benchmark.sh
 
 The output contains only video_id, model, caption, and generation metadata.
 Input paths and credentials are never written to the output.

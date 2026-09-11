@@ -110,12 +110,13 @@ The public evaluation entrypoint generates captions for one OmniFysics-Captioner
 endpoint. It does not include private answers, judge credentials, other model
 endpoints, or machine-specific paths.
 
-    python evaluation/run_caption_benchmark.py \
-      --manifest /path/to/public/media_manifest.jsonl \
-      --output runs/omnifysics_captioner/captions.jsonl \
-      --endpoint http://127.0.0.1:8000/v1 \
-      --model omnifysics-captioner \
-      --with-audio
+    export MANIFEST=/path/to/public/media_manifest.jsonl
+    export OUTPUT=runs/omnifysics_captioner/captions.jsonl
+    export ENDPOINT=http://127.0.0.1:8000/v1
+    export MODEL=omnifysics-captioner
+    export WORKERS=8
+    export WITH_AUDIO=1
+    bash evaluation/run_caption_benchmark.sh
 
 ## Model
 
