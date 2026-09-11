@@ -88,7 +88,7 @@ The released PPM checkpoint is available on Hugging Face:
 Start the PPM image-level service from a local clone of this repository:
 
     MODEL_PATH=/path/to/OmniFysics-Captioner/PPM \
-      bash PPM/scripts/serve_vllm.sh
+      bash inference/ppm/serve_vllm.sh
 
 ## OPC benchmark
 
