@@ -54,8 +54,9 @@ Daily-Physics 50K is constructed from heterogeneous audiovisual sources through 
   <img src="fig/daily-physics-overview.png" alt="Daily-Physics 50K overview" width="100%">
 </p>
 
-A 1,000-video open subset of Daily-Physics 50K is available through the
-benchmark repository linked in the OPC section below.
+A 1,000-video open subset of Daily-Physics 50K is available here:
+
+**[🔗 Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train)**
 
 ## OmniFysics-Agent
 
