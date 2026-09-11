@@ -56,17 +56,22 @@ def extract_audio(video: Path, directory: Path) -> Path:
 def request_caption(
     row: dict[str, Any],
     *,
+    data_root: Path,
     endpoint: str,
     model: str,
     api_key: str | None,
     with_audio: bool,
     max_tokens: int,
+    fps: float,
+    num_frames: int,
 ) -> dict[str, Any]:
     video_id = str(row.get("video_id") or row.get("id") or row.get("uuid") or "")
-    video_value = row.get("video_path") or row.get("path")
+    video_value = row.get("video_path") or row.get("media_path") or row.get("path")
     if not video_id or not video_value:
         raise ValueError("manifest rows require video_id and video_path")
     video = Path(str(video_value)).expanduser()
+    if not video.is_absolute():
+        video = data_root / video
     if not video.is_file():
         raise FileNotFoundError(video)
     content: list[dict[str, Any]] = [
@@ -83,6 +88,7 @@ def request_caption(
             "temperature": 0,
             "top_p": 1,
             "max_tokens": max_tokens,
+            "media_io_kwargs": {"video": {"fps": fps, "num_frames": num_frames}},
         }
         headers = {"Content-Type": "application/json"}
         if api_key:
@@ -102,15 +108,21 @@ def request_caption(
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument("--data-root", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--endpoint", required=True)
     parser.add_argument("--model", default="omnifysics-captioner")
     parser.add_argument("--api-key-env")
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--max-tokens", type=int, default=4096)
+    parser.add_argument("--fps", type=float, default=2.0)
+    parser.add_argument("--num-frames", type=int, default=128)
     parser.add_argument("--with-audio", action="store_true")
     args = parser.parse_args()
     api_key = os.environ.get(args.api_key_env) if args.api_key_env else None
+    data_root = args.data_root
+    if data_root is None:
+        data_root = args.manifest.parent.parent if args.manifest.parent.name == "data" else args.manifest.parent
     rows = [json.loads(line) for line in args.manifest.read_text(encoding="utf-8").splitlines() if line.strip()]
     args.output.parent.mkdir(parents=True, exist_ok=True)
     existing = {}
@@ -124,8 +136,12 @@ def main() -> int:
     with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
         jobs = {
             pool.submit(
-                request_caption, row, endpoint=args.endpoint, model=args.model,
-                api_key=api_key, with_audio=args.with_audio, max_tokens=args.max_tokens
+                request_caption, row, data_root=data_root, endpoint=args.endpoint, model=args.model,
+                api_key=api_key,
+                with_audio=args.with_audio,
+                max_tokens=args.max_tokens,
+                fps=args.fps,
+                num_frames=args.num_frames,
             ): row
             for row in pending
         }

@@ -102,11 +102,13 @@ The current release contains the OPC benchmark together with a 1,000-video train
 
 The public evaluation entrypoint generates captions for one OmniFysics-Captioner
 endpoint. It does not include private answers, judge credentials, other model
-endpoints, or machine-specific paths.
+endpoints, or machine-specific paths. Hugging Face provides the 1,000 test
+videos and 8,000 public questions/choices; gold answers remain private.
 
     bash evaluation/run_caption_benchmark.sh \
-      --manifest <public-manifest-jsonl> \
-      --output <captions-jsonl-output> \
+      --manifest ./OPC-Bench/data/eval_manifest.jsonl \
+      --data-root ./OPC-Bench \
+      --output ./captions.jsonl \
       --endpoint <your-openai-compatible-endpoint> \
       --with-audio
 
