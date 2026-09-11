@@ -43,21 +43,21 @@ def main() -> int:
     if len(contracts) != 1000:
         raise ValueError(f"expected the OPC 1K private answer file, got {len(contracts)} videos")
     predictions = read_jsonl(args.predictions)
-    by_video = {str(row.get("video_id")): row for row in predictions}
-    if len(by_video) != len(predictions):
-        raise ValueError("predictions contain duplicate video_id values")
-    expected = {str(row["video_id"]) for row in contracts}
-    if set(by_video) != expected:
+    by_media = {str(row.get("media_file")): row for row in predictions}
+    if len(by_media) != len(predictions):
+        raise ValueError("predictions contain duplicate media_file values")
+    expected = {str(row["media_file"]) for row in contracts}
+    if set(by_media) != expected:
         raise ValueError("prediction video IDs do not match the OPC 1K answer file")
 
     totals: collections.Counter[str] = collections.Counter()
     by_type: dict[str, collections.Counter[str]] = collections.defaultdict(collections.Counter)
     per_video = []
     for contract in contracts:
-        video_id = str(contract["video_id"])
-        prediction = by_video[video_id]
+        media_file = str(contract["media_file"])
+        prediction = by_media[media_file]
         if prediction.get("contract_sha256") != contract.get("contract_sha256"):
-            raise ValueError(f"contract hash mismatch for {video_id}")
+            raise ValueError(f"contract hash mismatch for {media_file}")
         answer_map = {
             str(item.get("question_id")): str(item.get("label") or "").upper()
             for item in prediction.get("answers", [])
@@ -81,7 +81,7 @@ def main() -> int:
             bucket[outcome] += 1
             bucket["questions"] += 1
         per_video.append({
-            "video_id": video_id,
+            "media_file": media_file,
             "benchmark_index": contract["benchmark_index"],
             "question_count": len(contract["questions"]),
             "hit": counts["hit"],

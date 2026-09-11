@@ -98,6 +98,7 @@ def request_caption(
         answer = response.json()["choices"][0]["message"]["content"]
     return {
         "video_id": video_id,
+        "media_file": video.name,
         "model": model,
         "caption": str(answer).strip(),
         "video_sha256": sha256_file(video),

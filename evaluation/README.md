@@ -27,6 +27,9 @@ Download the public OPC evaluation videos and manifest:
 Start the model using the deployment instructions in `../inference`, then
 generate one caption for each of the 1,000 evaluation videos:
 
+    MODEL_PATH=<downloaded-model-directory> MEDIA_ROOT=./OPC-Bench \
+      bash inference/serve_vllm.sh
+
     bash evaluation/run_caption_benchmark.sh \
       --manifest ./OPC-Bench/data/eval_manifest.jsonl \
       --data-root ./OPC-Bench \
@@ -46,7 +49,7 @@ Input paths and credentials are never written to the output.
 ## Answer Scoring
 
 The Hugging Face dataset deliberately excludes gold answers. For the requested
-GitHub release, the frozen 1K answer file is included locally at
+GitHub release, the frozen 1K answer file is included at
 evaluation/data/benchmark.private.jsonl. Score A-E prediction rows offline:
 
     python evaluation/score_opc.py \
@@ -54,8 +57,9 @@ evaluation/data/benchmark.private.jsonl. Score A-E prediction rows offline:
       --predictions <model-predictions-jsonl> \
       --output-dir <score-output-directory>
 
-The answer file contains the frozen OPC 1K contracts. Predictions must
-contain video_id, matching contract_sha256, and one A-E label per question_id.
+The answer file is keyed by the published media filenames under media/eval;
+it does not expose the internal logical video IDs. Predictions must contain
+media_file, matching contract_sha256, and one A-E label per question_id.
 The reference Judge model is gpt-5.6;
 the offline scorer reports the primary Video-Macro Coverage and question/type
 breakdowns without calling any API.
