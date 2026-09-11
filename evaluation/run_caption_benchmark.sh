@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 MANIFEST="${MANIFEST:?Set MANIFEST to a public video manifest JSONL}"
 OUTPUT="${OUTPUT:-runs/omnifysics_captioner/captions.jsonl}"
-ENDPOINT="${ENDPOINT:-http://127.0.0.1:8000/v1}"
+ENDPOINT="${ENDPOINT:?Set ENDPOINT to an OpenAI-compatible model endpoint}"
 MODEL="${MODEL:-omnifysics-captioner}"
 WORKERS="${WORKERS:-4}"
 MAX_TOKENS="${MAX_TOKENS:-4096}"

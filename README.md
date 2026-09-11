@@ -87,7 +87,7 @@ The released PPM checkpoint is available on Hugging Face:
 
 Start the PPM image-level service from a local clone of this repository:
 
-    MODEL_PATH=/path/to/OmniFysics-Captioner/PPM \
+    MODEL_PATH=<downloaded-model-directory>/PPM \
       bash inference/ppm/serve_vllm.sh
 
 ## OPC benchmark
@@ -110,11 +110,9 @@ The public evaluation entrypoint generates captions for one OmniFysics-Captioner
 endpoint. It does not include private answers, judge credentials, other model
 endpoints, or machine-specific paths.
 
-    export MANIFEST=/path/to/public/media_manifest.jsonl
-    export OUTPUT=runs/omnifysics_captioner/captions.jsonl
-    export ENDPOINT=http://127.0.0.1:8000/v1
-    export MODEL=omnifysics-captioner
-    export WORKERS=8
+    export MANIFEST=<public-manifest-jsonl>
+    export OUTPUT=<captions-jsonl-output>
+    export ENDPOINT=<your-openai-compatible-endpoint>
     export WITH_AUDIO=1
     bash evaluation/run_caption_benchmark.sh
 
@@ -132,9 +130,9 @@ inference/serve_vllm.sh to start the service, inference/caption_infer.py
 for text, image, audio, or video requests, and inference/smoke_test.py to
 verify a running endpoint.
 
-    MODEL_PATH=/path/to/OmniFysics-Captioner bash inference/serve_vllm.sh
-    python inference/caption_infer.py --base-url http://127.0.0.1:8000/v1 --video /path/to/video.mp4
-    python inference/smoke_test.py --base-url http://127.0.0.1:8000/v1
+    MODEL_PATH=<downloaded-model-directory> bash inference/serve_vllm.sh
+    python inference/caption_infer.py --base-url <your-endpoint> --video <video-file>
+    python inference/smoke_test.py --base-url <your-endpoint>
 
 The model checkpoint is available on Hugging Face:
 

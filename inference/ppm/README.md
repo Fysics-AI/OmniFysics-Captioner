@@ -7,16 +7,16 @@ inference entrypoints in the parent directory.
 
 Download the model repository, then start the PPM service:
 
-    MODEL_PATH=/path/to/OmniFysics-Captioner/PPM \
+    MODEL_PATH=<downloaded-model-directory>/PPM \
       bash inference/ppm/serve_vllm.sh
 
 Call the OpenAI-compatible endpoint with one image:
 
     python inference/ppm/infer.py \
-      --base-url http://127.0.0.1:8000/v1 \
-      --image /path/to/image.jpg
+      --base-url <your-endpoint> \
+      --image <image-file>
 
 Run the PPM smoke test:
 
     python inference/ppm/smoke_test.py \
-      --base-url http://127.0.0.1:8000/v1
+      --base-url <your-endpoint>
