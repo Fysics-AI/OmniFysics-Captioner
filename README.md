@@ -32,8 +32,8 @@ In addition, we also propose the following components:
 - [OPC benchmark](#opc-benchmark)
   - [Evaluation Quick Start](#evaluation-quick-start)
 - [Model](#model)
-  - [Inference code](#inference-code)
   - [Model Quick Start](#model-quick-start)
+  - [Inference code](#inference-code)
 - [Paper](#paper)
 - [Citation](#citation)
 - [License](#license)
@@ -113,18 +113,6 @@ endpoints, or machine-specific paths.
 
 OmniFysics-Captioner is an end-to-end, tool-free omni-modal Captioner fine-tuned from Qwen3-Omni on Daily-Physics 50K. It reads raw audio and video in a single forward pass and directly generates physics-aware, detailed captions, amortizing the evidence-acquisition and organization capability of OmniFysics-Agent without requiring external tools at inference.
 
-### Inference code
-
-Inference code is maintained in this GitHub repository under inference/
-rather than bundled inside the Hugging Face model directory. Use
-inference/serve_vllm.sh to start the service, inference/caption_infer.py
-for text, image, audio, or video requests, and inference/smoke_test.py to
-verify a running endpoint.
-
-    MODEL_PATH=<downloaded-model-directory> bash inference/serve_vllm.sh
-    python inference/caption_infer.py --base-url <your-endpoint> --video <video-file>
-    python inference/smoke_test.py --base-url <your-endpoint>
-
 The model checkpoint is available on Hugging Face:
 
 **[🤗 Fysics-AI/OmniFysics-Captioner](https://huggingface.co/Fysics-AI/OmniFysics-Captioner)**
@@ -137,6 +125,17 @@ Download the merged checkpoint and start the OpenAI-compatible service:
       --local-dir ./models/OmniFysics-Captioner
     MODEL_PATH=./models/OmniFysics-Captioner \
       bash inference/serve_vllm.sh
+
+### Inference code
+
+Inference code is maintained in this GitHub repository under inference/
+rather than bundled inside the Hugging Face model directory. Use
+inference/serve_vllm.sh to start the service, inference/caption_infer.py
+for text, image, audio, or video requests, and inference/smoke_test.py to
+verify a running endpoint.
+
+    python inference/caption_infer.py --base-url <your-endpoint> --video <video-file>
+    python inference/smoke_test.py --base-url <your-endpoint>
 
 ## Paper
 
