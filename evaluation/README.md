@@ -6,12 +6,8 @@ OmniFysics-Captioner endpoint and writes resumable JSONL captions. It does not
 contain private answers, judge credentials, other model endpoints, cluster
 paths, or benchmark result files.
 
-The local project has two related benchmark references:
-
-- OPC-Bench Final 8K: the frozen 1,000-video, 8,000-question package used for
-  detailed caption-to-QA evaluation.
-- Caption Benchmark Suite: the broader unified protocol covering DREAM-1K,
-  Daily-Omni, WorldSense, and Video-MME.
+The public evaluation target is OPC-Bench Final 8K: the frozen 1,000-video,
+8,000-question package used for detailed caption-to-QA evaluation.
 
 The script here is intentionally limited to the shared caption-generation
 stage. Use the benchmark owner's private scoring package for gold answers and
