@@ -110,11 +110,11 @@ The public evaluation entrypoint generates captions for one OmniFysics-Captioner
 endpoint. It does not include private answers, judge credentials, other model
 endpoints, or machine-specific paths.
 
-    export MANIFEST=<public-manifest-jsonl>
-    export OUTPUT=<captions-jsonl-output>
-    export ENDPOINT=<your-openai-compatible-endpoint>
-    export WITH_AUDIO=1
-    bash evaluation/run_caption_benchmark.sh
+    bash evaluation/run_caption_benchmark.sh \
+      --manifest <public-manifest-jsonl> \
+      --output <captions-jsonl-output> \
+      --endpoint <your-openai-compatible-endpoint> \
+      --with-audio
 
 ## Model
 

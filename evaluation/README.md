@@ -25,13 +25,15 @@ Prepare a manifest with one JSON object per line:
 
 Start the model using the deployment instructions in ../inference, then run:
 
-    export MANIFEST=<public-manifest-jsonl>
-    export OUTPUT=<captions-jsonl-output>
-    export ENDPOINT=<your-openai-compatible-endpoint>
-    export WITH_AUDIO=1
-    bash evaluation/run_caption_benchmark.sh
+    bash evaluation/run_caption_benchmark.sh \
+      --manifest <public-manifest-jsonl> \
+      --output <captions-jsonl-output> \
+      --endpoint <your-openai-compatible-endpoint> \
+      --with-audio
 
-WORKERS, MODEL, and MAX_TOKENS are optional overrides with useful defaults.
+Optional overrides are passed directly with --model, --workers, and
+--max-tokens. An API key can be supplied with --api-key-env when the endpoint
+requires one.
 
 The output contains only video_id, model, caption, and generation metadata.
 Input paths and credentials are never written to the output.
