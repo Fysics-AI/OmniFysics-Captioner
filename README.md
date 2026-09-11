@@ -1,5 +1,8 @@
 # OmniFysics-Captioner: Grounding Omni-Modal Understanding in the Physical World for Better Captioning
 
+Release: **OmniFysics-Captioner**. See [RELEASE.md](RELEASE.md) for the
+public release contents and repository boundaries.
+
 <p align="center">
   <a href="#paper">📄 Paper</a> •
   <a href="https://github.com/Fysics-AI/OmniFysics-Captioner">🌐 Project Page</a> •
