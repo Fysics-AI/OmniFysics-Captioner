@@ -26,7 +26,6 @@ In addition, we also propose the following components:
 
 - [Overview](#overview)
 - [Daily-Physics 50K](#daily-physics-50k)
-  - [Daily-Physics Quick Start](#daily-physics-quick-start)
 - [OmniFysics-Agent](#omnifysics-agent)
   - [Tool: Physical Perception Model (PPM)](#tool-physical-perception-model-ppm)
     - [PPM Quick Start](#ppm-quick-start)
@@ -55,17 +54,8 @@ Daily-Physics 50K is constructed from heterogeneous audiovisual sources through 
   <img src="fig/daily-physics-overview.png" alt="Daily-Physics 50K overview" width="100%">
 </p>
 
-A 1,000-video open subset of Daily-Physics 50K is now available for download:
-
-**[🔗 Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train](https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark/tree/main/media/train)**
-
-### Daily-Physics Quick Start
-
-Download the open training subset with the Hugging Face CLI:
-
-    hf download Fysics-AI/OmniPhysics-Caption_benchmark \
-      --repo-type dataset --include "media/train/*" \
-      --local-dir ./data/omni_physics_caption_benchmark
+A 1,000-video open subset of Daily-Physics 50K is available through the
+benchmark repository linked in the OPC section below.
 
 ## OmniFysics-Agent
 
