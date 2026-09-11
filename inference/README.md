@@ -4,7 +4,9 @@ The model weights are hosted at the Fysics-AI/OmniFysics-Captioner Hugging Face 
 
 The launcher expects the downloaded Hugging Face model directory in MODEL_PATH. It uses tensor parallelism 4 by default because Qwen3-Omni's audio encoder has 20 attention heads and TP4 is compatible while TP8 is not.
 
-    MODEL_PATH=<downloaded-model-directory> bash inference/serve_vllm.sh
+Set MEDIA_ROOT when requests use local image, audio, or video file URLs.
+
+    MODEL_PATH=<downloaded-model-directory> MEDIA_ROOT=<media-directory> bash inference/serve_vllm.sh
     python inference/caption_infer.py --base-url <your-endpoint> --video <video-file>
     python inference/smoke_test.py --base-url <your-endpoint>
 

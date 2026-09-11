@@ -13,6 +13,7 @@ MAX_MODEL_LEN="${MAX_MODEL_LEN:-16384}"
 MAX_NUM_BATCHED_TOKENS="${MAX_NUM_BATCHED_TOKENS:-16384}"
 MAX_NUM_SEQS="${MAX_NUM_SEQS:-8}"
 GPU_MEMORY_UTILIZATION="${GPU_MEMORY_UTILIZATION:-0.75}"
+MEDIA_ROOT="${MEDIA_ROOT:-}"
 
 test -s "${MODEL_PATH}/model.safetensors.index.json" || {
   echo "Missing model.safetensors.index.json under MODEL_PATH=${MODEL_PATH}" >&2
@@ -27,21 +28,17 @@ export PYTHONNOUSERSITE=1
 export OMP_NUM_THREADS="${OMP_NUM_THREADS:-16}"
 export MKL_NUM_THREADS="${MKL_NUM_THREADS:-16}"
 
-exec "${PYTHON_BIN}" -m vllm.entrypoints.cli.main serve "${MODEL_PATH}" \
-  --host "${HOST}" \
-  --port "${PORT}" \
-  --tokenizer "${TOKENIZER_PATH}" \
-  --served-model-name "${SERVED_MODEL_NAME}" \
-  --trust-remote-code \
-  --dtype bfloat16 \
-  --tensor-parallel-size "${TP}" \
-  --enable-expert-parallel \
-  --max-model-len "${MAX_MODEL_LEN}" \
-  --max-num-batched-tokens "${MAX_NUM_BATCHED_TOKENS}" \
-  --max-num-seqs "${MAX_NUM_SEQS}" \
-  --gpu-memory-utilization "${GPU_MEMORY_UTILIZATION}" \
-  --limit-mm-per-prompt '{"image":1,"video":1}' \
-  --chat-template-content-format openai \
-  --reasoning-parser qwen3 \
-  --generation-config vllm \
-  --disable-custom-all-reduce
+VLLM_ARGS=(
+  --host "${HOST}" --port "${PORT}" --tokenizer "${TOKENIZER_PATH}"
+  --served-model-name "${SERVED_MODEL_NAME}" --trust-remote-code --dtype bfloat16
+  --tensor-parallel-size "${TP}" --enable-expert-parallel
+  --max-model-len "${MAX_MODEL_LEN}" --max-num-batched-tokens "${MAX_NUM_BATCHED_TOKENS}"
+  --max-num-seqs "${MAX_NUM_SEQS}" --gpu-memory-utilization "${GPU_MEMORY_UTILIZATION}"
+  --limit-mm-per-prompt '{"image":1,"video":1}'
+  --chat-template-content-format openai --reasoning-parser qwen3
+  --generation-config vllm --disable-custom-all-reduce
+)
+if [[ -n "${MEDIA_ROOT}" ]]; then
+  VLLM_ARGS+=(--allowed-local-media-path "${MEDIA_ROOT}")
+fi
+exec "${PYTHON_BIN}" -m vllm.entrypoints.cli.main serve "${MODEL_PATH}" "${VLLM_ARGS[@]}"
