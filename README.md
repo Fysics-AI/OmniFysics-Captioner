@@ -1,11 +1,11 @@
 # OmniFysics-Captioner: Grounding Omni-Modal Understanding in the Physical World for Better Captioning
 
 <p align="center">
-  📄 <a href="#paper"> Paper</a> •
-  🌐 <a href="https://github.com/Fysics-AI/OmniFysics-Captioner"> Project Page</a> •
-  📊 <a href="https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark"> OPC benchmark &amp; Dataset</a> •
-  🤗 <a href="https://huggingface.co/Fysics-AI/OmniFysics-Captioner"> Model</a> •
-  📚 <a href="#citation"> Citation</a>
+  <a href="#paper">📄 Paper</a> •
+  <a href="https://github.com/Fysics-AI/OmniFysics-Captioner">🌐 Project Page</a> •
+  <a href="https://huggingface.co/datasets/Fysics-AI/OmniPhysics-Caption_benchmark">📊 OPC benchmark &amp; Dataset</a> •
+  <a href="https://huggingface.co/Fysics-AI/OmniFysics-Captioner">🤗 Model</a> •
+  <a href="#citation">📚 Citation</a>
 </p>
 
 ---
