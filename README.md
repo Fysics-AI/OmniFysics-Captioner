@@ -86,7 +86,7 @@ Start the PPM image-level service from a local clone of this repository:
 OmniPhysCap (OPC) is an audiovisual caption benchmark designed to evaluate how well generated captions retain omni-modal information from videos. It covers general visual semantics, temporal relations, audio, speech/OCR, and audiovisual alignment, with targeted physics-interaction and physics-outcome questions added to diagnose physical understanding. The benchmark contains 1,000 audiovisual clips and 8,000 questions. Each question includes an explicit *Not Mentioned* option, distinguishing omitted evidence from conflicting evidence.
 
 <p align="center">
-  <img src="fig/opc-benchmark-results.png" alt="OPC benchmark results" width="360">
+  <img src="fig/figure4_opc_benchmark.png" alt="OPC benchmark results" width="100%">
 </p>
 
 The benchmark and dataset are available on Hugging Face:
@@ -118,6 +118,20 @@ OmniFysics-Captioner is an end-to-end, tool-free omni-modal Captioner fine-tuned
 The model checkpoint is available on Hugging Face:
 
 **[🤗 Fysics-AI/OmniFysics-Captioner](https://huggingface.co/Fysics-AI/OmniFysics-Captioner)**
+
+### Performance
+
+On VDC Detailed, a detailed video-captioning benchmark, OmniFysics-Captioner achieves 57.9% accuracy and outperforms every method compared in the paper; it also leads the compared open-source methods on DREAM-1K and Omni-Cloze.
+
+<p align="center">
+  <img src="fig/table2_detailed_captioning_combined.png" alt="Detailed captioning benchmark results" width="100%">
+</p>
+
+More importantly, captions must support downstream understanding. We have a separate question-answering model read only the generated captions and then answer questions about the original videos. Across three such evaluations, the Captioner leads all compared open-source methods; on Daily-Omni it even surpasses the strongest baseline, Gemini 3.1 Pro, showing that the preserved details translate into effective evidence for question answering.
+
+<p align="center">
+  <img src="fig/figure3_caption_qa_cascade.png" alt="Caption-to-QA cascade results" width="100%">
+</p>
 
 ### Model Quick Start
 
