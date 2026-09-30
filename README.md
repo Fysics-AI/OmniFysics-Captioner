@@ -32,6 +32,8 @@ In addition, we also propose the following components:
 - [OPC benchmark](#opc-benchmark)
   - [Evaluation Quick Start](#evaluation-quick-start)
 - [Model](#model)
+  - [OmniFysics-Captioner](#omnifysics-captioner)
+  - [Performance](#performance)
   - [Model Quick Start](#model-quick-start)
   - [Inference code](#inference-code)
 - [Paper](#paper)
